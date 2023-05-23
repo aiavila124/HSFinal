@@ -108,38 +108,6 @@ class Modelo():
         y_pred_prob_log = model_log.predict_proba(X_test_df.values)
         y_prob_pos = y_pred_prob_log[:, 1]  
 
-        #Medir entrenamiento de reg_log
-        #AUC
-        # from sklearn.metrics import roc_auc_score
-
-        # # Obtener las probabilidades predichas para cada clase
-        # # Calcular AUC para cada clase individualmente
-        # num_classes=6
-        # auc_scores = []
-        # for i in range(num_classes):
-        #     y_true = (y_test_df == i)
-        #     y_pred_pos_acc = y_pred_prob_log[:, i]
-        #     score = roc_auc_score(y_true, y_pred_pos_acc)
-        #     auc_scores.append(score)
-
-        # # Calcular el promedio ponderado de los AUC
-        # class_sizes = np.bincount(y_test)
-        # auc_weighted = np.average(auc_scores, weights=class_sizes)
-
-        # print('AUC promedio ponderado:', auc_weighted)
-
-        # #Accuracy
-        # accuracy_log = model_log.score(X_test_df, y_test)
-        # print("Accuracy de RL:", accuracy_log)
-
-        # #Otra metricas
-        # from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
-        # print('Accuracy:', accuracy_score(y_test, y_pred_log))
-        # print('Precision:', precision_score(y_test, y_pred_log, average='weighted'))
-        # print('Recall:', recall_score(y_test, y_pred_log, average='weighted'))
-        # print('F1 score:', f1_score(y_test, y_pred_log, average='weighted'))
-        # print('Confusion matrix:\n', confusion_matrix(y_test, y_pred_log))
-
         #Tabla de cluster resultantes de reg_log
         y_test_df=pd.DataFrame(y_test)
         y_test_df1=pd.DataFrame(y_test)
@@ -154,11 +122,8 @@ class Modelo():
         clientes_clusters_df['Cluster original'] = y_test_df1.reset_index(drop=True)
         clientes_clusters_df
 
-        #Desde aquí es lo que estaba trabajando
-        #clientes_clusters = pd.read_excel('temp/' + file.filename)
         
         X_nuevos = pd.read_excel('temp/' + file.filename)
-        #X_nuevos = pd.read_excel('porfa_funciona.xlsx')
 
         X_nuevos_enc = onehot.transform(X_nuevos[cat])
         X_nuevos_cat = pd.DataFrame(X_nuevos_enc.toarray(), columns=new_columns)
@@ -173,8 +138,6 @@ class Modelo():
         #Unir ambas normalizaciones
         X_nuevos_df= pd.concat([X_nuevos_cat, X_nuevos_num], axis=1)
 
-
-        #Lo de Dalia
         #Herramienta para Predecir a que grupo pertenecen los clientes del df nuevo
         predicciones = model_log.predict(X_nuevos_df)
 
@@ -220,8 +183,8 @@ class Modelo():
         for row in dataframe_to_rows(cluster6, index=False, header=True):
             hoja6.append(row)      
 
-
-        workbook.save('temp\Lista Clientes.xlsx')
+        ruta = os.path.join('temp', 'Lista_Clientes.xlsx')
+        workbook.save(ruta)
 
         clusters = {}
         for cluster in range(6):
