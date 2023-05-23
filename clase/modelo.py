@@ -27,9 +27,9 @@ class Modelo():
         file.save('temp/' + file.filename)
         # dataFile.save('temp/' + dataFile.filename)
         # print("Aqui va el valor del file", file.filename)
-
-        df1= pd.read_excel('temp/prueba.xlsx',index_col=0)
-        print("Pasaaaaa", 'temp/' + file.filename)
+        routeFinal = os.path.join('temp', 'prueba.xlsx')
+        print("Pasaaaaa", routeFinal)
+        df1= pd.read_excel(routeFinal,index_col=0)
         
         num=[ #Financieras
             'costo_cobro', 'num_acuerdos_cumplidos', 'abono_total_deuda','Capital_vencido_actual',
