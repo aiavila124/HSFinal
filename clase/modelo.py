@@ -27,8 +27,8 @@ class Modelo():
         file.save('temp/' + file.filename)
         # dataFile.save('temp/' + dataFile.filename)
         # print("Aqui va el valor del file", file.filename)
-        
-        df1= pd.read_excel('temp\prueba.xlsx',index_col=0)
+
+        df1= pd.read_excel('temp/prueba.xlsx',index_col=0)
         print("Pasaaaaa", 'temp/' + file.filename)
         
         num=[ #Financieras
