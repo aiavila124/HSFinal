@@ -32,7 +32,7 @@ def procesar_archivo():
 
 @app.route('/descargar-archivo')
 def descargar_archivo():
-    ruta_archivo = os.path.join('temp', 'Lista Clientes.xlsx')
+    ruta_archivo = os.path.join('temp', 'Lista_Clientes.xlsx')
     return send_file(ruta_archivo, as_attachment=True)
    
 

@@ -184,6 +184,7 @@ class Modelo():
             hoja6.append(row)      
 
         ruta = os.path.join('temp', 'Lista_Clientes.xlsx')
+        print('holaaaaa',ruta)
         workbook.save(ruta)
 
         clusters = {}
