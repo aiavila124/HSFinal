@@ -22,10 +22,14 @@ class Modelo():
         self.active = 1
     
     def codigo_modelo(self,file):
+        print("AQUI ENTRO AL CODIGO")
+        print("->>>>>>>", 'temp/' + file.filename)
         file.save('temp/' + file.filename)
         # dataFile.save('temp/' + dataFile.filename)
         # print("Aqui va el valor del file", file.filename)
+        
         df1= pd.read_excel('temp\prueba.xlsx',index_col=0)
+        print("Pasaaaaa", 'temp/' + file.filename)
         
         num=[ #Financieras
             'costo_cobro', 'num_acuerdos_cumplidos', 'abono_total_deuda','Capital_vencido_actual',
