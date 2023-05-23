@@ -24,7 +24,7 @@ def admin(pagename):
 @app.route('/ruta-de-resultados', methods=['POST'])
 def procesar_archivo():
     archivo = request.files['mi_archivo'] 
-    print("Antess")
+    print("Antess->>>>>>>>>", archivo)
     if archivo.filename == '' or not archivo.filename.endswith('.xlsx'):
         return render_template('forms.html')   
     resultados_json = modelo.codigo_modelo(archivo)
